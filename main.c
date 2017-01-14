@@ -77,11 +77,18 @@ void Encoding()
 	switch(len_in%3)
 	{
 		case 1:
-
+			buffer_out[index_out + 0] = table[(buffer_in[index_in + 0]&0b11111100) >> 2];
+			buffer_out[index_out + 1] = table[(buffer_in[index_in + 0]&0b00000011) << 4];
+			buffer_out[index_out + 2] = '=';
+			buffer_out[index_out + 3] = '=';
+			index_out += 4;
 			break;
 			
 		case 2:
-
+			buffer_out[index_out + 0] = table[(buffer_in[index_in + 0]&0b11111100) >> 2];
+			buffer_out[index_out + 1] = table[(buffer_in[index_in + 0]&0b00000011) << 4 | (buffer_in[index_in + 1]&0b11110000) >> 4];
+			buffer_out[index_out + 2] = table[(buffer_in[index_in + 1]&0b00001111) << 2];
+			buffer_out[index_out + 3] = '=';	
 			break;
 
 		default:
