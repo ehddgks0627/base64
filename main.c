@@ -65,7 +65,7 @@ int main(void)
 void Encoding()
 {
 	char *buffer_in, *buffer_out;
-	int len_in, len_out, index_in, index_out;
+	unsigned int len_in, len_out, index_in, index_out;
 
 	buffer_in = (char*)malloc(ALIGN_MEM);
 	len_in = 0;
